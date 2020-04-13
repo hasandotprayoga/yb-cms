@@ -22,9 +22,9 @@
                     <td>{{ $escrow['description'] }}</td>
                 </tr>
             @empty
-                <div class="title m-b-md">
-                    <p>No users</p>
-                </div>
+                <tr>
+                    <td colspan="6">No data</td>
+                </tr>
             @endforelse
         </table>
     </body>
