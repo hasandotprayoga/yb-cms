@@ -52,9 +52,9 @@ class EscrowController extends Controller
             $result = [];
 
             foreach ($escrow as $k => $v) {
-                $key = array_search($v['amount'], array_column($this->unpaid, 'order_id'));
+                $key = array_search($v['amount'], array_column($this->unpaid, 'gross_revenue'));
                 $v['orderId'] = $this->unpaid[$key]['order_id'];
-                $result[] = $v;
+                $result[$k] = $v;
             }
 
             $this->escrow = $result;
