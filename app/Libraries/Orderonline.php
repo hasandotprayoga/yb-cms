@@ -48,7 +48,19 @@ class Orderonline
 
             foreach ($escrow as $k => $v) {
                 $key = array_search($v['amount'], array_column($this->order, 'gross_revenue'));
-                $v['orderId'] = $this->order[$key]['order_id'];
+                $order = $this->order[$key];
+                
+                $v['id'] = $order['_id'];
+                $v['orderId'] = $order['order_id'];
+                $v['customerData'] = [
+                    'name' => $order['customer_data']['name'],
+                    'phone' => $order['customer_data']['phone'],
+                    'address' => $order['customer_data']['address'],
+                    'province' => $order['customer_data']['province_name'],
+                    'city' => $order['customer_data']['city_name'],
+                    'subdistrict' => $order['customer_data']['subdistrict_name'],
+                    'postCode' => $order['customer_data']['zip']
+                ];
                 $result[$k] = $v;
             }
 
